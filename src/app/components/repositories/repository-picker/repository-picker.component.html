@@ -1,0 +1,12 @@
+<div *ngIf="showAllRepositories">
+    <div *ngFor="let repository of repositories; index as i">
+      <button class="repository-button" id="repository-button" mat-flat-button (click)="chooseRepository(repository?.full_name)">
+        {{repository?.full_name}}
+      </button>
+    </div>
+</div>
+
+<div *ngIf="!showAllRepositories">
+  <app-repository-invite (valueChange)="setShowAllRepositories(true)" [data]="data" [authData]="authData"
+                         [chosenRepository]="chosenRepository"></app-repository-invite>
+</div>

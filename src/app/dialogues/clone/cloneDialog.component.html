@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Clone request</h1>
+<div mat-dialog-content>
+  <p class='dialogText'>Are you sure that you want to clone the following project?</p>
+</div>
+
+<div mat-dialog-content>
+  <p class='recipient'>{{data.requestData?._repositoryName}}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button id="no" (click)='onNoClick()'>No</button>
+  <button mat-button id="yes" (click)='onYesClick()'>Yes</button>
+</div>

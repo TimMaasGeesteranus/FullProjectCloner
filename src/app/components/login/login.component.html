@@ -1,0 +1,18 @@
+<mat-card>
+  <div *ngIf="authService.isLoggedIn; else loginTemplate">
+    <h1>Welcome {{authService?.username}}</h1>
+    <img src="{{ authService?.userDetails?.photoURL }} ">
+    <br />
+    <button mat-flat-button class="btn-github" id="logout" (click)="logout()">
+      <i class="fab fa-github"></i> Stop authentication Github
+    </button>
+  </div>
+
+  <ng-template #loginTemplate>
+    <h1>FullProjectCloner</h1>
+    <button mat-flat-button class="btn-github" id="signInWithGithub" (click)="signInWithGithub()">
+      <i class="fab fa-github"></i> Authenticate with github
+    </button>
+    <p *ngIf="this?.loginError" class="authError">{{this?.loginError}}</p>
+  </ng-template>
+</mat-card>

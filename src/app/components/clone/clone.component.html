@@ -1,0 +1,36 @@
+<p class="title">
+  Clone
+  <span class="line"></span>
+</p>
+
+<div class="auth_button">
+  <a href="https://github.com/apps/fullprojectcloner/" target="_blank">
+    <button class="install_button" mat-flat-button><i class="fas fa-download"></i>
+      Install our application on github here.&nbsp;&nbsp;
+    </button>
+  </a>
+</div>
+<br>
+
+<div class="auth_button">
+  <app-login></app-login>
+</div>
+
+<div *ngIf="authService.isLoggedIn">
+  <mat-card>
+    <p>You're about to clone the following project:</p>
+    <h3 class="reponame">{{requestData?._repositoryName}}</h3>
+    <br>
+    <p>These issues will be copied to your new project:</p>
+
+    <div *ngFor="let issue of requestData?._issues">
+      <p class="issuehead">{{issue?._number}}. {{issue?._title}}</p>
+      <p class="issuebody">{{issue?._body}}</p>
+      <br>
+    </div>
+    <br><br>
+    <div *ngIf="requestData != null && !cloneButtonClicked">
+      <button mat-flat-button (click)="openDialog()" class="clonebutton">Clone</button>
+    </div>
+  </mat-card>
+</div>

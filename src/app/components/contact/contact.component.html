@@ -1,0 +1,42 @@
+<p class="title">
+  Contact
+  <span class="line"></span>
+</p>
+<mat-card>
+
+
+  <form [formGroup]="contactForm" #formDirective="ngForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="field">
+      <input type="text" matInput placeholder="Full Name" formControlName="fullName" class="form-control">
+    </mat-form-field>
+    <div *ngIf="!formSent && submitted && contactForm.controls.fullName.errors" class="error">
+      <div *ngIf="contactForm.controls.fullName.errors.required">Your full name is required</div>
+    </div>
+
+    <mat-form-field class="field">
+      <input matInput placeholder="E-Mail" formControlName="email">
+    </mat-form-field>
+    <div *ngIf="!formSent && submitted && contactForm.controls.email.errors" class="error">
+      <div *ngIf="contactForm.controls.email.errors.required">Your e-mail is required</div>
+      <div *ngIf="contactForm.controls.email.errors.email">E-mail is not valid</div>
+    </div>
+
+    <mat-form-field class="field">
+      <textarea matInput placeholder="Message" formControlName="message"></textarea>
+    </mat-form-field>
+    <div *ngIf="!formSent && submitted && contactForm.controls.message.errors" class="error">
+      <div *ngIf="contactForm.controls.message.errors.required">Please fill in a message</div>
+    </div>
+
+    <div class="button_div">
+      <button type="submit" id="submit" mat-raised-button class="send-button">Submit form</button>
+    </div>
+
+  </form>
+
+</mat-card>
+
+
+
+

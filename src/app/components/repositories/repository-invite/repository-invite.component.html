@@ -1,0 +1,39 @@
+<mat-card>
+  <button mat-flat-button class="btn-back" (click)="goBack()" #backButton>Back</button>
+
+  <p class="chosenrepo">You chose to clone this repository: <br><br></p>
+  <p class="repository">{{chosenRepository}}</p><br>
+
+</mat-card>
+
+<mat-card>
+  <p>Send invites manually:</p>
+  <form [formGroup]="singleRecipientForm" class="example-form">
+    <mat-form-field class="field">
+      <textarea #textInput matInput placeholder="user e-mail" formControlName="email"></textarea>
+    </mat-form-field>
+    <div *ngIf="!formSent && submitted && singleRecipientForm.controls.email.errors" class="error">
+      <div *ngIf="singleRecipientForm.controls.email.errors.required">Your e-mail is required</div>
+      <div *ngIf="singleRecipientForm.controls.email.errors.email">E-mail is not valid</div>
+    </div>
+    <br>
+    <div class="submitbtn">
+      <button type="submit" mat-raised-button (click)="sendMailTextInput(textInput.value)"
+              class="send-button">Send invite
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card>
+  <p>Send invites with a CSV-file:</p>
+  <br>
+  <input #myInput type="file" (change)="onFileSelect($event.target)" name="myfile" accept=".csv"
+         data-max-size="2048">
+  <div class="submitbtn">
+    <button type="button" mat-raised-button class="send-button" (click)="openDialog()">Send
+      invite
+    </button>
+  </div>
+</mat-card>
+
